@@ -1,52 +1,58 @@
-import random
 from faker import Faker
 
-print("Welcome to my word Guessing Game!\nYou'll have to guess the secret word")
-print("Let's get started!")
+def word_guessing_game():
+    print("Welcome to the Word Guessing Game!\nYou'll have to guess the secret word.")
+    print("Let's get started!")
 
-fake = Faker()
+    fake = Faker()
+    word = fake.word()
 
-word = fake.word()
+    # Uncomment this for debugging or testing
+    # print(f"(DEBUG) The secret word is: {word}")
 
-# print(word)
+    print("Guess the characters!")
+    guesses = ''
+    turns = 2 * len(word)
+    print(f"You have {turns} available wrong answers.")
 
-print("Guess the characters")
+    while turns > 0:
+        failed = 0
+        print("\nCurrent progress: ", end="")
 
-guesses = ''
-turns = 2 * len(word)
-print(f"you have {turns} available wrong answers")
+        for char in word:
+            if char in guesses:
+                print(char, end=" ")
+            else:
+                print("_", end=" ")
+                failed += 1
 
-while turns > 0:
+        if failed == 0:
+            print("\n\nCongratulations! You guessed the word.")
+            print(f"The word is: {word}")
+            break
 
-    failed = 0
+        print(f"\n\nYou have {turns} guesses remaining.")
+        guess = input("Guess a character: ").lower()
 
-    for char in word:
-
-        if char in guesses:
-            print(char, end=" ")
-
+        if guess.isalpha() and len(guess) == 1:
+            if guess in guesses:
+                print("You already guessed that letter.")
+            else:
+                guesses += guess
+                if guess not in word:
+                    turns -= 1
+                    print("Wrong guess!")
+                    if turns == 0:
+                        print(f"\nYou lose! The correct word was: {word}")
         else:
-            print("_")
-            failed += 1
+            print("Invalid input. Please enter a single alphabet character.")
 
-    if failed == 0:
-        print("You Win")
-        print("The word is: ", word)
-        break
-
-    print()
-    guess = input("guess a character:")
-
-    if guess.isalpha() and len(guess) == 1:
-        guesses += guess
-
-        if guess not in word:
-
-            turns -= 1
-            print("Wrong")
-            print("You have", + turns, 'more guesses')
-
-            if turns == 0:
-                print(f"You Loose the correct answer is {word}")
+    # Ask the user if they want to play again
+    replay = input("\nDo you want to play again? (yes/no): ").lower()
+    if replay in ['yes', 'y']:
+        word_guessing_game()
     else:
-        print("your guess should be only 'alphabet' letters and 'one' character long")
+        print("Thank you for playing! Goodbye.")
+
+# Start the game
+word_guessing_game()
