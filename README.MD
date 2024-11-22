@@ -26,7 +26,7 @@ This game is built using the english_words library to fetch a set of English wor
 
 1. Clone this repository:
    `bash
-   git clone https://github.com/yourusername/word_guessing_game.git
+   git clone https://github.com/vel0cirapt0r/word_guessing_game.git
    cd word_guessing_game
 
 2. Install dependencies:
