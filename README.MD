@@ -1,63 +1,50 @@
-Number Guessing Game
+# Word Guessing Game
 
-This is a simple Python-based Number Guessing Game where you try to guess a randomly selected secret number within a user-defined range. You have a limited number of attempts based on the size of the range, making it challenging and fun!
+A simple Python-based word guessing game where players try to guess a randomly chosen English word by guessing its characters. 
 
-How It Works
+This game is built using the english_words library to fetch a set of English words and provides a fun way to test your vocabulary.
 
-1. Set the Range: You begin by specifying a starting and ending number for the range of possible numbers.
+---
 
+## Features
 
-2. Guess the Secret Number: The program will select a random number within your range, and you’ll try to guess it.
+- Randomly selects a word from the English language using the english_words library.
+- Gives players a dynamic number of attempts based on the word's length.
+- Provides real-time feedback on the guessed characters and remaining attempts.
+- Allows players to replay the game after each round.
 
+---
 
-3. Hints: After each guess, the program will tell you if your guess was too high or too low, helping you zero in on the secret number.
+## Requirements
 
+- Python 3.8 or higher
+- english-words library
 
-4. Limited Attempts: The number of guesses is limited, calculated based on the size of the range. This adds a layer of challenge and requires strategic guesses.
+---
 
+## Installation
 
-5. Win or Lose: If you guess the number within the allotted attempts, you win! Otherwise, the game reveals the correct number, and you can try again.
+1. Clone this repository:
+   `bash
+   git clone https://github.com/yourusername/word_guessing_game.git
+   cd word_guessing_game
 
+2. Install dependencies:
 
-
-Example
-
-Here’s how a typical game session might look:
-
-1. The game welcomes you and asks for a starting and ending number for the range.
-
-
-2. If the range is valid, the game announces the number of guesses you have.
-
-
-3. You start guessing, with the game giving hints after each guess.
-
-
-4. If you guess correctly, it congratulates you! If not, it provides the answer after you’ve used all attempts.
+pip install -r requirements.txt
 
 
+3. Run the game:
 
-Code Overview
-
-Random Number Generation: A random integer is selected within your chosen range.
-
-User Input: The program requests input for both the range and each guess.
-
-Hints: After each incorrect guess, the game tells you if the guess was too high or too low.
-
-Winning and Losing Conditions: The game congratulates you if you guess correctly; otherwise, it reveals the number after your chances run out.
-
-
-How to Run
-
-1. Make sure you have Python installed.
-
-
-2. Save the code to a file (e.g., guessing_game.py).
-
-
-3. Run the game by typing python guessing_game.py in your terminal or command prompt.
+python main.py
 
 
 
-Enjoy the challenge, and happy guessing!
+
+---
+
+Dependencies
+
+This project uses the following library:
+
+- english-words
