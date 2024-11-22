@@ -1,14 +1,17 @@
-from faker import Faker
+import random
+from nltk.corpus import words
+
 
 def word_guessing_game():
     print("Welcome to the Word Guessing Game!\nYou'll have to guess the secret word.")
     print("Let's get started!")
 
-    fake = Faker()
-    word = fake.word()
+    # Ensure nltk's word list is loaded
+    word_list = words.words()
+    word = random.choice(word_list).lower()
 
     # Uncomment this for debugging or testing
-    # print(f"(DEBUG) The secret word is: {word}")
+    print(f"(DEBUG) The secret word is: {word}")
 
     print("Guess the characters!")
     guesses = ''
@@ -54,5 +57,9 @@ def word_guessing_game():
     else:
         print("Thank you for playing! Goodbye.")
 
+
 # Start the game
-word_guessing_game()
+if __name__ == "__main__":
+    import nltk
+    nltk.download('words', quiet=True)
+    word_guessing_game()
