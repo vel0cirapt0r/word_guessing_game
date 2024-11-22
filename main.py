@@ -1,21 +1,21 @@
+from english_words import get_english_words_set
 import random
-from nltk.corpus import words
 
 
 def word_guessing_game():
     print("Welcome to the Word Guessing Game!\nYou'll have to guess the secret word.")
     print("Let's get started!")
 
-    # Ensure nltk's word list is loaded
-    word_list = words.words()
-    word = random.choice(word_list).lower()
+    # Use get_english_words_set to retrieve a set of words
+    word_set = get_english_words_set(['web2'], lower=True)
+    word = random.choice(list(word_set))
 
     # Uncomment this for debugging or testing
-    print(f"(DEBUG) The secret word is: {word}")
+    # print(f"(DEBUG) The secret word is: {word}")
 
     print("Guess the characters!")
     guesses = ''
-    turns = 2 * len(word)
+    turns = 2 * len(word) if len(word) < 6 else 12
     print(f"You have {turns} available wrong answers.")
 
     while turns > 0:
@@ -59,7 +59,4 @@ def word_guessing_game():
 
 
 # Start the game
-if __name__ == "__main__":
-    import nltk
-    nltk.download('words', quiet=True)
-    word_guessing_game()
+word_guessing_game()
